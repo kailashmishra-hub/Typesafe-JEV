@@ -1,0 +1,1395 @@
+{
+  "model": "typesafe/jev-1.14",
+  "state": {
+    "customer_id": "CUST0001",
+    "as_of": "2026-11-07",
+    "transaction_period": {
+      "from": "2025-11-01",
+      "to": "2026-10-31"
+    },
+    "transaction_selection": {
+      "amount_greater_than_inr": 100000,
+      "include_returned_payments_regardless_of_amount": true,
+      "include_aml_linked_transactions_regardless_of_amount": true,
+      "applies_within_transaction_period": true,
+      "included_count": 12,
+      "excluded_count": 108
+    },
+    "currency": "INR",
+    "summary": {
+      "account_count": 1,
+      "transaction_count": 120,
+      "history_start": "2025-11-02",
+      "history_end": "2026-10-27",
+      "cash_withdrawal_count": 36,
+      "cash_withdrawal_total_inr": 296826,
+      "open_aml_case_count": 0,
+      "last_completed_kyc": {
+        "completed_on": "2026-10-05",
+        "status": "completed"
+      },
+      "transaction_activity": {
+        "basis": "all_transactions_in_transaction_period_before_detail_filter",
+        "total_transaction_count": 120,
+        "posted_transaction_count": 120,
+        "posted_credits_inr": 1923090,
+        "posted_debits_inr": 1301130,
+        "income_credits_inr": 1899090,
+        "cash_withdrawal_count": 36,
+        "cash_withdrawals_inr": 296826,
+        "repayment_count": 12,
+        "repayments_inr": 113760,
+        "returned_payment_count": 0,
+        "returned_attempted_amount_inr": 0
+      },
+      "exported_transaction_count": 12
+    },
+    "sections": {
+      "customer_profile": [
+        {
+          "DisplayName": "Synthetic Customer 001",
+          "Email": "customer1@example.invalid",
+          "City": "Pune",
+          "Country": "IN",
+          "CustomerSince": "2021-02-01",
+          "CustomerStatus": "active"
+        }
+      ],
+      "employment_income": [
+        {
+          "EmploymentType": "salaried",
+          "EmployerOrBusiness": "Demo Employer 2",
+          "EmploymentTenureMonths": 13,
+          "MonthlyGrossIncomeINR": 181400,
+          "MonthlyDeductionsINR": 19400,
+          "MonthlyNetIncomeINR": 162000,
+          "MonthlyLivingExpensesINR": 51800,
+          "IncomePattern": "stable",
+          "IncomeEvidenceStatus": "verified"
+        }
+      ],
+      "loan_applications": [
+        {
+          "ApplicationID": "APP0001",
+          "ApplicationDate": "2026-10-02",
+          "LoanType": "Personal loan",
+          "Purpose": "Home improvement",
+          "RequestedAmountINR": 112000,
+          "RequestedTenureMonths": 36,
+          "ApplicationStatus": "intake",
+          "ApplicantNotes": "Please review the application and advise the next step."
+        }
+      ],
+      "existing_liabilities": [
+        {
+          "LiabilityID": "LIAB0001-1",
+          "LiabilityType": "Personal loan",
+          "LenderName": "Demo Lender 1",
+          "AccountStatus": "active",
+          "OutstandingBalanceINR": 66000,
+          "MonthlyPaymentINR": 6000,
+          "OverdueAmountINR": 0,
+          "DaysPastDue": 0,
+          "OpenedOn": "2022-02-01"
+        }
+      ],
+      "banking_monthly": {
+        "columns": [
+          "AccountID",
+          "StatementMonth",
+          "OpeningBalanceINR",
+          "TotalCreditsINR",
+          "IncomeCreditsINR",
+          "TotalDebitsINR",
+          "ClosingBalanceINR",
+          "AverageBalanceINR",
+          "PaymentReturnsCount",
+          "CashWithdrawalsINR",
+          "CashWithdrawalCount",
+          "PostedTransactionCount"
+        ],
+        "rows": [
+          [
+            "ACCT0001-1",
+            "2021-11-01",
+            324000,
+            118640,
+            116640,
+            118540,
+            324100,
+            377220.17,
+            0,
+            26393,
+            3,
+            10
+          ],
+          [
+            "ACCT0001-1",
+            "2021-12-01",
+            324100,
+            119390,
+            117390,
+            119490,
+            324000,
+            375789.42,
+            0,
+            26631,
+            3,
+            10
+          ],
+          [
+            "ACCT0001-1",
+            "2022-01-01",
+            324000,
+            120140,
+            118140,
+            120040,
+            324100,
+            376101.29,
+            0,
+            26768,
+            3,
+            10
+          ],
+          [
+            "ACCT0001-1",
+            "2022-02-01",
+            324100,
+            120890,
+            118890,
+            120990,
+            324000,
+            381996.68,
+            0,
+            27006,
+            3,
+            10
+          ],
+          [
+            "ACCT0001-1",
+            "2022-03-01",
+            324000,
+            121640,
+            119640,
+            121540,
+            324100,
+            376695.97,
+            0,
+            27143,
+            3,
+            10
+          ],
+          [
+            "ACCT0001-1",
+            "2022-04-01",
+            324100,
+            122390,
+            120390,
+            122490,
+            324000,
+            378744.73,
+            0,
+            27381,
+            3,
+            10
+          ],
+          [
+            "ACCT0001-1",
+            "2022-05-01",
+            324000,
+            123140,
+            121140,
+            123040,
+            324100,
+            377290.65,
+            0,
+            27518,
+            3,
+            10
+          ],
+          [
+            "ACCT0001-1",
+            "2022-06-01",
+            324100,
+            123890,
+            121890,
+            123990,
+            324000,
+            379359.23,
+            0,
+            27756,
+            3,
+            10
+          ],
+          [
+            "ACCT0001-1",
+            "2022-07-01",
+            324000,
+            124640,
+            122640,
+            124540,
+            324100,
+            377885.32,
+            0,
+            27893,
+            3,
+            10
+          ],
+          [
+            "ACCT0001-1",
+            "2022-08-01",
+            324100,
+            125390,
+            123390,
+            125490,
+            324000,
+            378168.13,
+            0,
+            28131,
+            3,
+            10
+          ],
+          [
+            "ACCT0001-1",
+            "2022-09-01",
+            324000,
+            126140,
+            124140,
+            126040,
+            324100,
+            380292.67,
+            0,
+            28268,
+            3,
+            10
+          ],
+          [
+            "ACCT0001-1",
+            "2022-10-01",
+            324100,
+            126890,
+            124890,
+            126990,
+            324000,
+            378762.81,
+            0,
+            28506,
+            3,
+            10
+          ],
+          [
+            "ACCT0001-1",
+            "2022-11-01",
+            324000,
+            127640,
+            125640,
+            127540,
+            324100,
+            380907.17,
+            0,
+            28643,
+            3,
+            10
+          ],
+          [
+            "ACCT0001-1",
+            "2022-12-01",
+            324100,
+            128390,
+            126390,
+            128490,
+            324000,
+            379357.48,
+            0,
+            28881,
+            3,
+            10
+          ],
+          [
+            "ACCT0001-1",
+            "2023-01-01",
+            324000,
+            129140,
+            127140,
+            129040,
+            324100,
+            379669.35,
+            0,
+            29018,
+            3,
+            10
+          ],
+          [
+            "ACCT0001-1",
+            "2023-02-01",
+            324100,
+            129890,
+            127890,
+            129990,
+            324000,
+            385947.04,
+            0,
+            29256,
+            3,
+            10
+          ],
+          [
+            "ACCT0001-1",
+            "2023-03-01",
+            324000,
+            130640,
+            128640,
+            130540,
+            324100,
+            380264.03,
+            0,
+            29393,
+            3,
+            10
+          ],
+          [
+            "ACCT0001-1",
+            "2023-04-01",
+            324100,
+            131390,
+            129390,
+            131490,
+            324000,
+            382431.73,
+            0,
+            29631,
+            3,
+            10
+          ],
+          [
+            "ACCT0001-1",
+            "2023-05-01",
+            324000,
+            132140,
+            130140,
+            132040,
+            324100,
+            380858.71,
+            0,
+            29768,
+            3,
+            10
+          ],
+          [
+            "ACCT0001-1",
+            "2023-06-01",
+            324100,
+            132890,
+            130890,
+            132990,
+            324000,
+            383046.23,
+            0,
+            30006,
+            3,
+            10
+          ],
+          [
+            "ACCT0001-1",
+            "2023-07-01",
+            324000,
+            133640,
+            131640,
+            133540,
+            324100,
+            381453.39,
+            0,
+            30143,
+            3,
+            10
+          ],
+          [
+            "ACCT0001-1",
+            "2023-08-01",
+            324100,
+            134390,
+            132390,
+            134490,
+            324000,
+            381736.19,
+            0,
+            30381,
+            3,
+            10
+          ],
+          [
+            "ACCT0001-1",
+            "2023-09-01",
+            324000,
+            135140,
+            133140,
+            135040,
+            324100,
+            383979.67,
+            0,
+            30518,
+            3,
+            10
+          ],
+          [
+            "ACCT0001-1",
+            "2023-10-01",
+            324100,
+            135890,
+            133890,
+            135990,
+            324000,
+            382330.87,
+            0,
+            30756,
+            3,
+            10
+          ],
+          [
+            "ACCT0001-1",
+            "2023-11-01",
+            324000,
+            136640,
+            134640,
+            136540,
+            324100,
+            384594.17,
+            0,
+            30893,
+            3,
+            10
+          ],
+          [
+            "ACCT0001-1",
+            "2023-12-01",
+            324100,
+            137390,
+            135390,
+            137490,
+            324000,
+            382925.55,
+            0,
+            31131,
+            3,
+            10
+          ],
+          [
+            "ACCT0001-1",
+            "2024-01-01",
+            324000,
+            138140,
+            136140,
+            138040,
+            324100,
+            383237.42,
+            0,
+            31268,
+            3,
+            10
+          ],
+          [
+            "ACCT0001-1",
+            "2024-02-01",
+            324100,
+            138890,
+            136890,
+            138990,
+            324000,
+            387625.07,
+            0,
+            31506,
+            3,
+            10
+          ],
+          [
+            "ACCT0001-1",
+            "2024-03-01",
+            324000,
+            139640,
+            137640,
+            139540,
+            324100,
+            383832.1,
+            0,
+            31643,
+            3,
+            10
+          ],
+          [
+            "ACCT0001-1",
+            "2024-04-01",
+            324100,
+            140390,
+            138390,
+            140490,
+            324000,
+            386118.73,
+            0,
+            31881,
+            3,
+            10
+          ],
+          [
+            "ACCT0001-1",
+            "2024-05-01",
+            324000,
+            141140,
+            139140,
+            141040,
+            324100,
+            384426.77,
+            0,
+            32018,
+            3,
+            10
+          ],
+          [
+            "ACCT0001-1",
+            "2024-06-01",
+            324100,
+            141890,
+            139890,
+            141990,
+            324000,
+            386733.23,
+            0,
+            32256,
+            3,
+            10
+          ],
+          [
+            "ACCT0001-1",
+            "2024-07-01",
+            324000,
+            142640,
+            140640,
+            142540,
+            324100,
+            385021.45,
+            0,
+            32393,
+            3,
+            10
+          ],
+          [
+            "ACCT0001-1",
+            "2024-08-01",
+            324100,
+            143390,
+            141390,
+            143490,
+            324000,
+            385304.26,
+            0,
+            32631,
+            3,
+            10
+          ],
+          [
+            "ACCT0001-1",
+            "2024-09-01",
+            324000,
+            144140,
+            142140,
+            144040,
+            324100,
+            387666.67,
+            0,
+            32768,
+            3,
+            10
+          ],
+          [
+            "ACCT0001-1",
+            "2024-10-01",
+            324100,
+            144890,
+            142890,
+            144990,
+            324000,
+            385898.94,
+            0,
+            33006,
+            3,
+            10
+          ],
+          [
+            "ACCT0001-1",
+            "2024-11-01",
+            324000,
+            145640,
+            143640,
+            145540,
+            324100,
+            388281.17,
+            0,
+            33143,
+            3,
+            10
+          ],
+          [
+            "ACCT0001-1",
+            "2024-12-01",
+            324100,
+            146390,
+            144390,
+            146490,
+            324000,
+            386493.61,
+            0,
+            33381,
+            3,
+            10
+          ],
+          [
+            "ACCT0001-1",
+            "2025-01-01",
+            324000,
+            147140,
+            145140,
+            147040,
+            324100,
+            386805.48,
+            0,
+            33518,
+            3,
+            10
+          ],
+          [
+            "ACCT0001-1",
+            "2025-02-01",
+            324100,
+            147890,
+            145890,
+            147990,
+            324000,
+            393847.75,
+            0,
+            33756,
+            3,
+            10
+          ],
+          [
+            "ACCT0001-1",
+            "2025-03-01",
+            324000,
+            148640,
+            146640,
+            148540,
+            324100,
+            387400.16,
+            0,
+            33893,
+            3,
+            10
+          ],
+          [
+            "ACCT0001-1",
+            "2025-04-01",
+            324100,
+            149390,
+            147390,
+            149490,
+            324000,
+            389805.73,
+            0,
+            34131,
+            3,
+            10
+          ],
+          [
+            "ACCT0001-1",
+            "2025-05-01",
+            324000,
+            150140,
+            148140,
+            150040,
+            324100,
+            387994.84,
+            0,
+            34268,
+            3,
+            10
+          ],
+          [
+            "ACCT0001-1",
+            "2025-06-01",
+            324100,
+            150890,
+            148890,
+            150990,
+            324000,
+            390420.23,
+            0,
+            34506,
+            3,
+            10
+          ],
+          [
+            "ACCT0001-1",
+            "2025-07-01",
+            324000,
+            151640,
+            149640,
+            151540,
+            324100,
+            388589.52,
+            0,
+            34643,
+            3,
+            10
+          ],
+          [
+            "ACCT0001-1",
+            "2025-08-01",
+            324100,
+            152390,
+            150390,
+            152490,
+            324000,
+            388872.32,
+            0,
+            34881,
+            3,
+            10
+          ],
+          [
+            "ACCT0001-1",
+            "2025-09-01",
+            324000,
+            153140,
+            151140,
+            153040,
+            324100,
+            391353.67,
+            0,
+            35018,
+            3,
+            10
+          ],
+          [
+            "ACCT0001-1",
+            "2025-10-01",
+            324100,
+            153890,
+            151890,
+            153990,
+            324000,
+            389467,
+            0,
+            35256,
+            3,
+            10
+          ],
+          [
+            "ACCT0001-1",
+            "2025-11-01",
+            324000,
+            154640,
+            152640,
+            154540,
+            324100,
+            391968.17,
+            0,
+            35393,
+            3,
+            10
+          ],
+          [
+            "ACCT0001-1",
+            "2025-12-01",
+            324100,
+            155390,
+            153390,
+            155490,
+            324000,
+            390061.68,
+            0,
+            35631,
+            3,
+            10
+          ],
+          [
+            "ACCT0001-1",
+            "2026-01-01",
+            324000,
+            156140,
+            154140,
+            156040,
+            324100,
+            390373.55,
+            0,
+            35768,
+            3,
+            10
+          ],
+          [
+            "ACCT0001-1",
+            "2026-02-01",
+            324100,
+            156890,
+            154890,
+            156990,
+            324000,
+            397798.11,
+            0,
+            36006,
+            3,
+            10
+          ],
+          [
+            "ACCT0001-1",
+            "2026-03-01",
+            324000,
+            157640,
+            155640,
+            157540,
+            324100,
+            390968.23,
+            0,
+            36143,
+            3,
+            10
+          ],
+          [
+            "ACCT0001-1",
+            "2026-04-01",
+            324100,
+            158390,
+            156390,
+            158490,
+            324000,
+            393492.73,
+            0,
+            36381,
+            3,
+            10
+          ],
+          [
+            "ACCT0001-1",
+            "2026-05-01",
+            324000,
+            164000,
+            162000,
+            60340,
+            427660,
+            450247.35,
+            0,
+            13584,
+            3,
+            10
+          ],
+          [
+            "ACCT0001-1",
+            "2026-06-01",
+            427660,
+            164000,
+            162000,
+            60340,
+            531320,
+            554660.27,
+            0,
+            13584,
+            3,
+            10
+          ],
+          [
+            "ACCT0001-1",
+            "2026-07-01",
+            531320,
+            164000,
+            162000,
+            60340,
+            634980,
+            657567.35,
+            0,
+            13584,
+            3,
+            10
+          ],
+          [
+            "ACCT0001-1",
+            "2026-08-01",
+            634980,
+            164000,
+            162000,
+            60340,
+            738640,
+            761227.35,
+            0,
+            13584,
+            3,
+            10
+          ],
+          [
+            "ACCT0001-1",
+            "2026-09-01",
+            738640,
+            164000,
+            162000,
+            60340,
+            842300,
+            865640.27,
+            0,
+            13584,
+            3,
+            10
+          ],
+          [
+            "ACCT0001-1",
+            "2026-10-01",
+            842300,
+            164000,
+            162000,
+            60340,
+            945960,
+            968547.35,
+            0,
+            13584,
+            3,
+            10
+          ]
+        ]
+      },
+      "application_documents": [
+        {
+          "ApplicationID": "APP0001",
+          "DocumentID": "DOC0001-1",
+          "DocumentType": "identity",
+          "Required": true,
+          "Status": "verified",
+          "SubmittedOn": "2026-10-28",
+          "VerifiedOn": "2026-11-02",
+          "DiscrepancyFlagged": false
+        },
+        {
+          "ApplicationID": "APP0001",
+          "DocumentID": "DOC0001-2",
+          "DocumentType": "income_evidence",
+          "Required": true,
+          "Status": "verified",
+          "SubmittedOn": "2026-10-28",
+          "VerifiedOn": "2026-11-02",
+          "DiscrepancyFlagged": false
+        },
+        {
+          "ApplicationID": "APP0001",
+          "DocumentID": "DOC0001-3",
+          "DocumentType": "bank_statements",
+          "Required": true,
+          "Status": "In Progress",
+          "SubmittedOn": "2026-10-28",
+          "VerifiedOn": "2026-11-02",
+          "DiscrepancyFlagged": "In Review"
+        }
+      ],
+      "credit_history": [
+        {
+          "ReportID": "RPT0001",
+          "ReportStatus": "available",
+          "SyntheticCreditScore": 637,
+          "CreditHistoryMonths": 31,
+          "EnquiriesLast6Months": 1,
+          "MaxDaysPastDueLast12Months": 0,
+          "ReportDate": "2026-11-03"
+        }
+      ],
+      "accounts": [
+        {
+          "AccountID": "ACCT0001-1",
+          "BankName": "Demo Bank 1",
+          "AccountType": "primary_transaction",
+          "HistoryStartDate": "2021-11-01",
+          "HistoryEndDate": "2026-10-31",
+          "OpeningHistoryBalanceINR": 324000
+        }
+      ],
+      "transactions": [
+        {
+          "AccountID": "ACCT0001-1",
+          "TransactionID": "TXN0000481",
+          "TransactionDate": "2025-11-02",
+          "TransactionType": "income_credit",
+          "Direction": "credit",
+          "TransactionAmountINR": 152640,
+          "Channel": "bank_transfer",
+          "CounterpartyName": "Demo Employer 2",
+          "CounterpartyCountry": "IN",
+          "PostingStatus": "posted",
+          "BalanceAfterTransactionINR": 476640,
+          "SelectionReasons": [
+            "amount_above_100000_inr"
+          ]
+        },
+        {
+          "AccountID": "ACCT0001-1",
+          "TransactionID": "TXN0000491",
+          "TransactionDate": "2025-12-02",
+          "TransactionType": "income_credit",
+          "Direction": "credit",
+          "TransactionAmountINR": 153390,
+          "Channel": "bank_transfer",
+          "CounterpartyName": "Demo Employer 2",
+          "CounterpartyCountry": "IN",
+          "PostingStatus": "posted",
+          "BalanceAfterTransactionINR": 477490,
+          "SelectionReasons": [
+            "amount_above_100000_inr"
+          ]
+        },
+        {
+          "AccountID": "ACCT0001-1",
+          "TransactionID": "TXN0000501",
+          "TransactionDate": "2026-01-02",
+          "TransactionType": "income_credit",
+          "Direction": "credit",
+          "TransactionAmountINR": 154140,
+          "Channel": "bank_transfer",
+          "CounterpartyName": "Demo Employer 2",
+          "CounterpartyCountry": "IN",
+          "PostingStatus": "posted",
+          "BalanceAfterTransactionINR": 478140,
+          "SelectionReasons": [
+            "amount_above_100000_inr"
+          ]
+        },
+        {
+          "AccountID": "ACCT0001-1",
+          "TransactionID": "TXN0000511",
+          "TransactionDate": "2026-02-02",
+          "TransactionType": "income_credit",
+          "Direction": "credit",
+          "TransactionAmountINR": 154890,
+          "Channel": "bank_transfer",
+          "CounterpartyName": "Demo Employer 2",
+          "CounterpartyCountry": "IN",
+          "PostingStatus": "posted",
+          "BalanceAfterTransactionINR": 478990,
+          "SelectionReasons": [
+            "amount_above_100000_inr"
+          ]
+        },
+        {
+          "AccountID": "ACCT0001-1",
+          "TransactionID": "TXN0000521",
+          "TransactionDate": "2026-03-02",
+          "TransactionType": "income_credit",
+          "Direction": "credit",
+          "TransactionAmountINR": 155640,
+          "Channel": "bank_transfer",
+          "CounterpartyName": "Demo Employer 2",
+          "CounterpartyCountry": "IN",
+          "PostingStatus": "posted",
+          "BalanceAfterTransactionINR": 479640,
+          "SelectionReasons": [
+            "amount_above_100000_inr"
+          ]
+        },
+        {
+          "AccountID": "ACCT0001-1",
+          "TransactionID": "TXN0000531",
+          "TransactionDate": "2026-04-02",
+          "TransactionType": "income_credit",
+          "Direction": "credit",
+          "TransactionAmountINR": 156390,
+          "Channel": "bank_transfer",
+          "CounterpartyName": "Demo Employer 2",
+          "CounterpartyCountry": "IN",
+          "PostingStatus": "posted",
+          "BalanceAfterTransactionINR": 480490,
+          "SelectionReasons": [
+            "amount_above_100000_inr"
+          ]
+        },
+        {
+          "AccountID": "ACCT0001-1",
+          "TransactionID": "TXN0000541",
+          "TransactionDate": "2026-05-02",
+          "TransactionType": "income_credit",
+          "Direction": "credit",
+          "TransactionAmountINR": 162000,
+          "Channel": "bank_transfer",
+          "CounterpartyName": "Demo Employer 2",
+          "CounterpartyCountry": "IN",
+          "PostingStatus": "posted",
+          "BalanceAfterTransactionINR": 486000,
+          "SelectionReasons": [
+            "amount_above_100000_inr"
+          ]
+        },
+        {
+          "AccountID": "ACCT0001-1",
+          "TransactionID": "TXN0000551",
+          "TransactionDate": "2026-06-02",
+          "TransactionType": "income_credit",
+          "Direction": "credit",
+          "TransactionAmountINR": 162000,
+          "Channel": "bank_transfer",
+          "CounterpartyName": "Demo Employer 2",
+          "CounterpartyCountry": "IN",
+          "PostingStatus": "posted",
+          "BalanceAfterTransactionINR": 589660,
+          "SelectionReasons": [
+            "amount_above_100000_inr"
+          ]
+        },
+        {
+          "AccountID": "ACCT0001-1",
+          "TransactionID": "TXN0000561",
+          "TransactionDate": "2026-07-02",
+          "TransactionType": "income_credit",
+          "Direction": "credit",
+          "TransactionAmountINR": 162000,
+          "Channel": "bank_transfer",
+          "CounterpartyName": "Demo Employer 2",
+          "CounterpartyCountry": "IN",
+          "PostingStatus": "posted",
+          "BalanceAfterTransactionINR": 693320,
+          "SelectionReasons": [
+            "amount_above_100000_inr"
+          ]
+        },
+        {
+          "AccountID": "ACCT0001-1",
+          "TransactionID": "TXN0000571",
+          "TransactionDate": "2026-08-02",
+          "TransactionType": "income_credit",
+          "Direction": "credit",
+          "TransactionAmountINR": 162000,
+          "Channel": "bank_transfer",
+          "CounterpartyName": "Demo Employer 2",
+          "CounterpartyCountry": "IN",
+          "PostingStatus": "posted",
+          "BalanceAfterTransactionINR": 796980,
+          "SelectionReasons": [
+            "amount_above_100000_inr"
+          ]
+        },
+        {
+          "AccountID": "ACCT0001-1",
+          "TransactionID": "TXN0000581",
+          "TransactionDate": "2026-09-02",
+          "TransactionType": "income_credit",
+          "Direction": "credit",
+          "TransactionAmountINR": 162000,
+          "Channel": "bank_transfer",
+          "CounterpartyName": "Demo Employer 2",
+          "CounterpartyCountry": "IN",
+          "PostingStatus": "posted",
+          "BalanceAfterTransactionINR": 900640,
+          "SelectionReasons": [
+            "amount_above_100000_inr"
+          ]
+        },
+        {
+          "AccountID": "ACCT0001-1",
+          "TransactionID": "TXN0000591",
+          "TransactionDate": "2026-10-02",
+          "TransactionType": "income_credit",
+          "Direction": "credit",
+          "TransactionAmountINR": 162000,
+          "Channel": "bank_transfer",
+          "CounterpartyName": "Demo Employer 2",
+          "CounterpartyCountry": "IN",
+          "PostingStatus": "posted",
+          "BalanceAfterTransactionINR": 1004300,
+          "SelectionReasons": [
+            "amount_above_100000_inr"
+          ]
+        }
+      ],
+      "kyc_history": [
+        {
+          "ReviewType": "onboarding",
+          "ReviewStartedOn": "2021-02-01",
+          "CompletedOn": "2021-02-01",
+          "ReviewStatus": "completed",
+          "RiskRating": "low",
+          "EvidenceValidUntil": "2030-12-31",
+          "NextReviewDueOn": "2024-10-01"
+        },
+        {
+          "ReviewType": "periodic",
+          "ReviewStartedOn": "2023-09-01",
+          "CompletedOn": "2023-09-06",
+          "ReviewStatus": "completed",
+          "RiskRating": "Medium",
+          "EvidenceValidUntil": "2030-12-31",
+          "NextReviewDueOn": "2027-10-05"
+        },
+        {
+          "ReviewType": "periodic",
+          "ReviewStartedOn": "2026-10-01",
+          "CompletedOn": "2026-10-10",
+          "ReviewStatus": "In progress",
+          "RiskRating": "Medium",
+          "EvidenceValidUntil": "2030-10-01",
+          "NextReviewDueOn": "2027-10-07"
+        }
+      ],
+      "screening_history": [
+        {
+          "ScreeningID": "SCR0001-1-P",
+          "ScreeningDate": "2021-02-01",
+          "ScreeningCategory": "PEP",
+          "MatchStatus": "no_match",
+          "MatchReference": null,
+          "ReviewStatus": "completed",
+          "ReviewOutcome": "no_match",
+          "ResolvedOn": "2021-02-01",
+          "CaseReference": null
+        },
+        {
+          "ScreeningID": "SCR0001-1-S",
+          "ScreeningDate": "2021-02-01",
+          "ScreeningCategory": "Sanctions",
+          "MatchStatus": "no_match",
+          "MatchReference": null,
+          "ReviewStatus": "In Progress",
+          "ReviewOutcome": "In Progress",
+          "ResolvedOn": "2021-02-01",
+          "CaseReference": null
+        },
+        {
+          "ScreeningID": "SCR0001-1-T",
+          "ScreeningDate": "2021-02-01",
+          "ScreeningCategory": "Terrorism",
+          "MatchStatus": "no_match",
+          "MatchReference": null,
+          "ReviewStatus": "completed",
+          "ReviewOutcome": "no_match",
+          "ResolvedOn": "2021-02-01",
+          "CaseReference": null
+        },
+        {
+          "ScreeningID": "SCR0001-2-P",
+          "ScreeningDate": "2026-10-20",
+          "ScreeningCategory": "PEP",
+          "MatchStatus": "no_match",
+          "MatchReference": null,
+          "ReviewStatus": "pending",
+          "ReviewOutcome": "In Progress",
+          "ResolvedOn": "2026-10-22",
+          "CaseReference": null
+        },
+        {
+          "ScreeningID": "SCR0001-2-S",
+          "ScreeningDate": "2026-10-20",
+          "ScreeningCategory": "Sanctions",
+          "MatchStatus": "no_match",
+          "MatchReference": null,
+          "ReviewStatus": "completed",
+          "ReviewOutcome": "no_match",
+          "ResolvedOn": "2026-10-22",
+          "CaseReference": null
+        },
+        {
+          "ScreeningID": "SCR0001-2-T",
+          "ScreeningDate": "2026-10-20",
+          "ScreeningCategory": "Terrorism",
+          "MatchStatus": "no_match",
+          "MatchReference": null,
+          "ReviewStatus": "completed",
+          "ReviewOutcome": "no_match",
+          "ResolvedOn": "2026-10-22",
+          "CaseReference": null
+        }
+      ],
+      "aml_cases": [],
+      "funds_and_wealth": [
+        {
+          "DeclarationID": "DECL0001-F",
+          "DeclarationDate": "2026-10-01",
+          "DeclarationCategory": "source_of_funds",
+          "SourceType": "salary",
+          "SourceDescription": "Income from Demo Employer 2",
+          "DeclaredAmountINR": 1944000,
+          "AmountBasis": "annual_inflow",
+          "EvidenceType": "income_statement",
+          "VerificationStatus": "verified",
+          "VerifiedOn": "2026-10-06",
+          "NextReviewDueOn": "2027-10-01",
+          "Notes": "Annualised declared net income; not a loan deposit or five-year transaction total."
+        },
+        {
+          "DeclarationID": "DECL0001-W",
+          "DeclarationDate": "2026-10-01",
+          "DeclarationCategory": "source_of_wealth",
+          "SourceType": "property_sale",
+          "SourceDescription": "Declared property sale for Synthetic Customer 0001",
+          "DeclaredAmountINR": 4050000,
+          "AmountBasis": "accumulated_wealth",
+          "EvidenceType": "sale_deed",
+          "VerificationStatus": "verified",
+          "VerifiedOn": "2026-10-06",
+          "NextReviewDueOn": "2027-10-01",
+          "Notes": "Estimated accumulated wealth; not an account balance."
+        }
+      ]
+    }
+  },
+  "questions": {
+    "information_sufficient": {
+      "type": "choice",
+      "instructions": "Is the information sufficient to assess this application?",
+      "criteria": {
+        "Sufficient": "Information provided is sufficient.",
+        "Missing information": "Information provided has missing datas.",
+        "Conflicting Information": "It has conflicting data"
+      }
+    },
+    "identity_status": {
+      "type": "noul",
+      "instructions": "Does the latest screening record confirm PEP status?",
+      "yes": "The customer has no bad records",
+      "no": "Customer has bad or missing records"
+    },
+    "income_from_other_sources": {
+      "type": "choice",
+      "instructions": "Does customer holds income from other sources?",
+      "criteria": {
+        "Land": null,
+        "properties": null,
+        "Inherited": null,
+        "Others": null
+      }
+    },
+    "question_1794079686996": {
+      "type": "choice",
+      "instructions": "Does customer have personal loans?",
+      "criteria": {
+        "Yes": "Yes",
+        "No": "No",
+        "Need Human intervention": "Need Human intervention"
+      }
+    },
+    "screening_questionnaire": {
+      "type": "choice",
+      "instructions": "Does the customer’s screening history show any unresolved PEP, sanctions, or terrorism matches that require compliance review?",
+      "criteria": {
+        "Clear": "All three screenings are completed with no matches, or matches formally cleared.",
+        "Reviewed required": "A potential match or unresolved screening review exists.",
+        "Confirmed concern": "A relevant match is confirmed and requires compliance assessment.",
+        "Insufficient information": "Any required screening result is missing, outdated under your policy, or conflicting."
+      }
+    },
+    "document_discrepancies": {
+      "type": "choice",
+      "instructions": "Are any document discrepancies flagged?",
+      "criteria": {
+        "Discrepancies flagged": "Discrepancies flagged",
+        "None flagged": "None flagged",
+        "Insufficient information": "Insufficient information"
+      }
+    },
+    "kyc_question": {
+      "type": "choice",
+      "instructions": "Is the customer's KYC currently compliant?",
+      "criteria": {
+        "very low risk": "very low risk",
+        "medium risk": "medium risk",
+        "critical risk": "critical risk"
+      }
+    }
+  }
+}

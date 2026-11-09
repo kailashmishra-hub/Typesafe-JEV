@@ -1,71 +1,47 @@
-# Typesafe JEV — Terminal customer lookup
+# Simple Typesafe JEV request
 
-Enter a CustomerID, see customer details, save customer JSON, and optionally evaluate
-the same JSON with Typesafe JEV. All 50 demo customers are synthetic.
+Four files. No Excel lookup, web UI, SDK or extra packages.
 
-## Run
+- `request.json`: your supplied model, customer state and seven questions.
+- `run_jev.py`: sends that JSON to Typesafe and prints/saves the response.
+- `README.md`: these instructions.
+- `.gitignore`: excludes credentials and generated responses.
 
-Requires Python 3.10 or later. Open a terminal in this repository folder:
+## Run in PowerShell (Python 3.10+)
 
-```powershell
-python -m pip install -r requirements.txt
-python console_app.py
-```
-
-Enter `CUST0001` (or any ID through `CUST0050`). The program displays basic customer
-information and saves `exports/CUST0001_loan_details.json`.
-
-## Optional JEV evaluation
-
-Set your key in the same PowerShell window before running:
+Open a terminal in this folder:
 
 ```powershell
 $env:TYPESAFE_API_KEY = 'your-typesafe-api-key'
-python console_app.py
+python run_jev.py
 ```
 
-After lookup, enter `y` to send the customer JSON to Typesafe. The program prints
-the actual API response and saves `exports/CUST0001_jev_result.json`.
-Without a key, or if you decline, customer retrieval and export still work.
-Never commit API keys. `.env.example` documents variables; `.env` is not loaded
-automatically. `TYPESAFE_MODEL` can override the default `jev-latest` model.
+The response appears in the terminal and is saved to `response.json`. Failed calls
+do not overwrite an existing response, so an old file is not a new assessment.
+No CustomerID prompt: edit `request.json` to change the customer data or questions.
+The program sends the complete request without dropping fields or calculating answers.
+Never put your API key inside the request JSON or commit it.
 
-## Files
-
-| File | Purpose |
-|---|---|
-| `console_app.py` | Main program: customer prompt, details and output files |
-| `customer_lookup.py` | Read and join customer records from Excel |
-| `loan_export.py` | Build the loan-focused customer JSON |
-| `jev_evaluation.py` | Call the Typesafe Python SDK |
-| `questions.json` | Document verification, compliance and next-step questions |
-| `data/` | Eight Excel workbooks containing 50 synthetic customers |
-| `requirements.txt` | Required Python packages |
-| `tests/` | Local tests; no paid API calls |
-
-## Customer JSON
-
-All 13 customer sections are included. Transaction details cover the latest 12
-complete available statement months: November 2025–October 2026 in this dataset.
-Details include amounts strictly above INR 100,000, plus returned payments and
-AML-linked transactions regardless of amount, within that year. Summary totals
-cover all transactions in the year before filtering. For CUST0001, this means
-12 detailed transactions and totals covering 120 transactions. The cutoff selects
-detail; it is not a lending or AML risk rule.
-
-Monthly banking retains 60 months as a compact `columns`/`rows` table. Other sections
-are lists. Administrative metadata and repeated fields are omitted; this export
-is not a lossless copy of the spreadsheets. Source workbooks are read only.
-`CUSTOMER_DATA_DIR` can specify another folder with the same workbook schema.
-
-JEV receives the export as state and the questions in `questions.json`. Results
-are intake assessments, not loan approvals. Verify explicit source flags even
-when model confidence is high. Failed requests do not silently trim the data.
-
-## Tests
+Check the JSON locally without calling the API:
 
 ```powershell
-python -m unittest discover -s tests -v
+python run_jev.py --dry-run
 ```
 
-Reference: https://docs.typesafe.ai/introduction/quickstart
+Or supply another request file: `python run_jev.py another_request.json`.
+
+## Review the supplied request
+
+The attachment is preserved as supplied, including `model: typesafe/jev-1.14`.
+Use a model name available to your direct Typesafe API account if that name is rejected;
+the official quickstart uses `jev-latest`. Local dry-run checks JSON structure only,
+not model availability or the full API schema.
+
+`identity_status` contains `yes`/`no` fields. The direct API documents optional
+`criteria: {"true": "...", "false": "..."}` instead. Its PEP question also differs
+from its descriptions about bad records; decide the intended question before editing.
+The script warns about this but does not silently change your request or meanings.
+
+References:
+- https://docs.typesafe.ai/introduction/quickstart
+- https://docs.typesafe.ai/primitives/noul
