@@ -22,25 +22,19 @@ No CustomerID prompt: edit `request.json` to change the customer data or questio
 The program sends the complete request without dropping fields or calculating answers.
 Never put your API key inside the request JSON or commit it.
 
-Check the JSON locally without calling the API:
-
-```powershell
-python run_jev.py --dry-run
-```
-
-Or supply another request file: `python run_jev.py another_request.json`.
+The script reads `request.json`, sends it to JEV, then prints and saves the response.
+Errors appear as normal Python exceptions.
 
 ## Review the supplied request
 
 The attachment is preserved as supplied, including `model: typesafe/jev-1.14`.
 Use a model name available to your direct Typesafe API account if that name is rejected;
-the official quickstart uses `jev-latest`. Local dry-run checks JSON structure only,
-not model availability or the full API schema.
+the official quickstart uses `jev-latest`.
 
 `identity_status` contains `yes`/`no` fields. The direct API documents optional
 `criteria: {"true": "...", "false": "..."}` instead. Its PEP question also differs
 from its descriptions about bad records; decide the intended question before editing.
-The script warns about this but does not silently change your request or meanings.
+The script sends your request without changing these fields.
 
 References:
 - https://docs.typesafe.ai/introduction/quickstart
