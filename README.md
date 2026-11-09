@@ -1,5 +1,23 @@
 # Typesafe JEV — Customer loan intake demo
 
+## Basic console version (no Streamlit)
+
+```powershell
+python -m pip install -r requirements-console.txt
+python console_app.py
+```
+
+Enter a CustomerID such as `CUST0001`. The program prints basic customer details
+and saves `exports/CUST0001_loan_details.json` using the same projection and
+transaction-selection rules as the previous UI download. It does not print hundreds
+of records to the terminal; open the saved JSON for the customer data.
+
+To enable JEV, set `$env:TYPESAFE_API_KEY = 'your-key'` before running.
+The program then asks whether to send that customer JSON to Typesafe. Enter `y`
+to display the API results and save `exports/CUST0001_jev_result.json`.
+Without a key or if you decline, customer retrieval/export still works. No web
+server, browser or Streamlit installation is needed for this version.
+
 Search a synthetic customer, retrieve their records across eight Excel workbooks,
 download a loan-focused JSON, and evaluate the same JSON with Typesafe JEV.
 
