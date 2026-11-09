@@ -1,91 +1,71 @@
-# Typesafe JEV — Customer loan intake demo
+# Typesafe JEV — Terminal customer lookup
 
-## Basic console version (no Streamlit)
+Enter a CustomerID, see customer details, save customer JSON, and optionally evaluate
+the same JSON with Typesafe JEV. All 50 demo customers are synthetic.
+
+## Run
+
+Requires Python 3.10 or later. Open a terminal in this repository folder:
 
 ```powershell
-python -m pip install -r requirements-console.txt
+python -m pip install -r requirements.txt
 python console_app.py
 ```
 
-Enter a CustomerID such as `CUST0001`. The program prints basic customer details
-and saves `exports/CUST0001_loan_details.json` using the same projection and
-transaction-selection rules as the previous UI download. It does not print hundreds
-of records to the terminal; open the saved JSON for the customer data.
+Enter `CUST0001` (or any ID through `CUST0050`). The program displays basic customer
+information and saves `exports/CUST0001_loan_details.json`.
 
-To enable JEV, set `$env:TYPESAFE_API_KEY = 'your-key'` before running.
-The program then asks whether to send that customer JSON to Typesafe. Enter `y`
-to display the API results and save `exports/CUST0001_jev_result.json`.
-Without a key or if you decline, customer retrieval/export still works. No web
-server, browser or Streamlit installation is needed for this version.
+## Optional JEV evaluation
 
-Search a synthetic customer, retrieve their records across eight Excel workbooks,
-download a loan-focused JSON, and evaluate the same JSON with Typesafe JEV.
-
-## Run (Python 3.10+)
+Set your key in the same PowerShell window before running:
 
 ```powershell
-python -m venv .venv
-.\.venv\Scripts\python.exe -m pip install -r requirements.txt
 $env:TYPESAFE_API_KEY = 'your-typesafe-api-key'
-.\.venv\Scripts\python.exe -m streamlit run app.py --server.port 8502
+python console_app.py
 ```
 
-Open http://localhost:8502, enter `CUST0001` through `CUST0050`, and click
-**Find customer**. The JSON download works without an API key. Click **Evaluate
-with JEV** to send the displayed customer's export to Typesafe. Keep your API key
-in the server environment, never in Excel, customer JSON, source code or Git.
-`.env.example` documents variables; `.env` is not loaded automatically.
+After lookup, enter `y` to send the customer JSON to Typesafe. The program prints
+the actual API response and saves `exports/CUST0001_jev_result.json`.
+Without a key, or if you decline, customer retrieval and export still work.
+Never commit API keys. `.env.example` documents variables; `.env` is not loaded
+automatically. `TYPESAFE_MODEL` can override the default `jev-latest` model.
 
-## How JEV is integrated
+## Files
 
-`app.py` calls `build_loan_export` and passes the resulting structured JSON to
-`jev_evaluation.evaluate_customer`. That function constructs SDK questions from
-`questions.json` and calls `TypeSafeClient(model='jev-latest').system_one`.
-`TYPESAFE_MODEL` can override the model. Results retain the API's answer types,
-probabilities and confidence in the UI. New searches clear previous assessments.
+| File | Purpose |
+|---|---|
+| `console_app.py` | Main program: customer prompt, details and output files |
+| `customer_lookup.py` | Read and join customer records from Excel |
+| `loan_export.py` | Build the loan-focused customer JSON |
+| `jev_evaluation.py` | Call the Typesafe Python SDK |
+| `questions.json` | Document verification, compliance and next-step questions |
+| `data/` | Eight Excel workbooks containing 50 synthetic customers |
+| `requirements.txt` | Required Python packages |
+| `tests/` | Local tests; no paid API calls |
 
-The three demo questions assess document verification, compliance-review triggers,
-and the next intake step. They are evaluated from the source state, not from each
-other's answers. The last question applies the explicitly documented demo priorities
-in `questions.json`. This is not an underwriting or automatic loan approval system.
-No lender eligibility thresholds are provided. A model answer can contradict its
-source even with high confidence; compare explicit flags against the records.
+## Customer JSON
 
-For CUST0001, the supplied records support verified documents, no listed compliance
-trigger, and sending the intake to an underwriter. Live output is model-dependent;
-these are expected test interpretations, not fabricated API results.
+All 13 customer sections are included. Transaction details cover the latest 12
+complete available statement months: November 2025–October 2026 in this dataset.
+Details include amounts strictly above INR 100,000, plus returned payments and
+AML-linked transactions regardless of amount, within that year. Summary totals
+cover all transactions in the year before filtering. For CUST0001, this means
+12 detailed transactions and totals covering 120 transactions. The cutoff selects
+detail; it is not a lending or AML risk rule.
 
-## Data and export
+Monthly banking retains 60 months as a compact `columns`/`rows` table. Other sections
+are lists. Administrative metadata and repeated fields are omitted; this export
+is not a lossless copy of the spreadsheets. Source workbooks are read only.
+`CUSTOMER_DATA_DIR` can specify another folder with the same workbook schema.
 
-All 50 customer records in `data/` are synthetic. Source spreadsheets are read only.
-The repository validates the eight workbooks and joins their records by customer ID.
-`CUSTOMER_DATA_DIR` can point to an alternative folder with the same schema.
-
-The export contains 13 sections. Transactions cover the latest 12 complete available
-statement months (November 2025–October 2026 in this dataset). Detailed records
-include amounts **strictly above INR 100,000**, returned payments and AML-linked
-transactions regardless of amount. Exactly INR 100,000 needs an exception to qualify.
-The selection applies to both credits and debits and deduplicates overlapping reasons.
-The INR cutoff is a detail filter, not an AML or credit risk rule.
-
-`summary.transaction_activity` includes all transactions in that year before detail
-filtering. An empty filtered list is not evidence of no activity. `banking_monthly`
-retains 60 months in a compact `columns`/`rows` table. Other sections remain lists.
-Repeated IDs, provenance and selected administrative metadata are omitted; this is a
-loan-focused projection, not a lossless full-source copy. Command-line retrieval
-through `customer_lookup.py` retains the complete source schema.
-
-For CUST0001 the detailed export contains 12 transactions, while yearly totals cover
-120. Large requests can still exceed provider limits; failures never silently trim
-the state or fabricate results. Evaluation is a user-triggered external API call.
+JEV receives the export as state and the questions in `questions.json`. Results
+are intake assessments, not loan approvals. Verify explicit source flags even
+when model confidence is high. Failed requests do not silently trim the data.
 
 ## Tests
 
 ```powershell
 python -m unittest discover -s tests -v
 ```
-
-Tests use a fake client, require no API key or paid API calls, and check the real SDK
-question construction, preserved request state, missing-key handling and export rules.
 
 Reference: https://docs.typesafe.ai/introduction/quickstart

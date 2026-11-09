@@ -1,3 +1,2 @@
 openpyxl>=3.1,<4
-streamlit>=1.51,<2
 typesafe-sdk==0.7.5
