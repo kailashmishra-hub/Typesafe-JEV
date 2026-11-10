@@ -3,6 +3,8 @@ import os
 from pathlib import Path
 from urllib.request import Request, urlopen
 
+os.environ['TYPESAFE_API_KEY'] = 'your-typesafe-key-here'  # Replace with your key locally.
+
 folder = Path(__file__).resolve().parent
 payload = json.loads((folder / 'request.json').read_text(encoding='utf-8-sig'))
 
