@@ -1,64 +1,74 @@
 {
-    "information_sufficient": {
-      "type": "choice",
-      "instructions": "Is the information sufficient to assess this application?",
-      "criteria": {
-        "Sufficient": "Information provided is sufficient.",
-        "Missing information": "Information provided has missing datas.",
-        "Conflicting Information": "It has conflicting data"
-      }
-    },
-    "identity_status": {
-      "type": "noul",
-      "instructions": "Does the latest screening record confirm PEP status?",
-      "yes": "The customer has no bad records",
-      "no": "Customer has bad or missing records"
-    },
-    "income_from_other_sources": {
-      "type": "choice",
-      "instructions": "Does customer holds income from other sources?",
-      "criteria": {
-        "Land": null,
-        "properties": null,
-        "Inherited": null,
-        "Others": null
-      }
-    },
-    "question_1794079686996": {
-      "type": "choice",
-      "instructions": "Does customer have personal loans?",
-      "criteria": {
-        "Yes": "Yes",
-        "No": "No",
-        "Need Human intervention": "Need Human intervention"
-      }
-    },
-    "screening_questionnaire": {
-      "type": "choice",
-      "instructions": "Does the customer’s screening history show any unresolved PEP, sanctions, or terrorism matches that require compliance review?",
-      "criteria": {
-        "Clear": "All three screenings are completed with no matches, or matches formally cleared.",
-        "Reviewed required": "A potential match or unresolved screening review exists.",
-        "Confirmed concern": "A relevant match is confirmed and requires compliance assessment.",
-        "Insufficient information": "Any required screening result is missing, outdated under your policy, or conflicting."
-      }
-    },
-    "document_discrepancies": {
-      "type": "choice",
-      "instructions": "Are any document discrepancies flagged?",
-      "criteria": {
-        "Discrepancies flagged": "Discrepancies flagged",
-        "None flagged": "None flagged",
-        "Insufficient information": "Insufficient information"
-      }
-    },
-    "kyc_question": {
-      "type": "choice",
-      "instructions": "Is the customer's KYC currently compliant?",
-      "criteria": {
-        "very low risk": "very low risk",
-        "medium risk": "medium risk",
-        "critical risk": "critical risk"
-      }
+  "information_sufficient": {
+    "type": "choice",
+    "instructions": "Is the information sufficient to assess this application?",
+    "criteria": {
+      "Sufficient": "Information provided is sufficient.",
+      "Missing information": "Information provided has missing datas.",
+      "Conflicting Information": "It has conflicting data"
+    }
+  },
+  "identity_status": {
+    "type": "noul",
+    "instructions": "Does the latest screening record confirm PEP status?",
+    "yes": "The customer has no bad records",
+    "no": "Customer has bad or missing records"
+  },
+  "income_from_other_sources": {
+    "type": "choice",
+    "instructions": "Does customer holds income from other sources?",
+    "criteria": {
+      "Land": null,
+      "properties": null,
+      "Inherited": null,
+      "Others": null
+    }
+  },
+  "question_1794079686996": {
+    "type": "choice",
+    "instructions": "Does customer have personal loans?",
+    "criteria": {
+      "Yes": "Yes",
+      "No": "No",
+      "Need Human intervention": "Need Human intervention"
+    }
+  },
+  "screening_questionnaire": {
+    "type": "choice",
+    "instructions": "Does the customer’s screening history show any unresolved PEP, sanctions, or terrorism matches that require compliance review?",
+    "criteria": {
+      "Clear": "All three screenings are completed with no matches, or matches formally cleared.",
+      "Reviewed required": "A potential match or unresolved screening review exists.",
+      "Confirmed concern": "A relevant match is confirmed and requires compliance assessment.",
+      "Insufficient information": "Any required screening result is missing, outdated under your policy, or conflicting."
+    }
+  },
+  "document_discrepancies": {
+    "type": "choice",
+    "instructions": "Are any document discrepancies flagged?",
+    "criteria": {
+      "Discrepancies flagged": "Discrepancies flagged",
+      "None flagged": "None flagged",
+      "Insufficient information": "Insufficient information"
+    }
+  },
+  "transaction_type": {
+    "type": "choice",
+    "instructions": "How frequently the customer makes transactions below INR 100000?",
+    "criteria": {
+      "very frequently": "very frequently",
+      "every quarter": "every quarter",
+      "annually": "annually",
+      "rarely": "rarely"
+    }
+  },
+  "kyc_question": {
+    "type": "choice",
+    "instructions": "Is the customer's KYC currently compliant?",
+    "criteria": {
+      "very low risk": "very low risk",
+      "medium risk": "medium risk",
+      "critical risk": "critical risk"
     }
   }
+}

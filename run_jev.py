@@ -9,7 +9,7 @@ folder = Path(__file__).resolve().parent
 load_dotenv(folder / ".env")
 
 customer = json.loads(
-    (folder / "exports/CUST0002_loan_details.json").read_text(encoding="utf-8-sig")
+    (folder / "exports/CUST0005_loan_details.json").read_text(encoding="utf-8-sig")
 )
 questions = json.loads(
     (folder / "questions.json").read_text(encoding="utf-8-sig")
