@@ -12,6 +12,9 @@ python console_app.py
 Enter a CustomerID such as `CUST0001`. The program reads the Excel files directly,
 collects the matching rows from each worksheet containing a CustomerID column,
 prints the customer profile and saves `exports/CUST0001_loan_details.json`.
+The same lookup applies to every CustomerID. The console prints the number of
+records exported from each worksheet, including the complete transaction count.
+Run it again with another ID to create that customer's own export file.
 
 No customer or source JSON files are created upfront. There is no separate
 conversion step. Every lookup reads the current workbook contents.
