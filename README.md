@@ -1,42 +1,64 @@
-# Simple Typesafe JEV request
+# Typesafe JEV customer lookup
 
-Four files. No Excel lookup, web UI, SDK or extra packages.
+## Retrieve a customer
 
-- `request.json`: your supplied model, customer state and seven questions.
-- `jev_evaluation.py`: sends that JSON to Typesafe and prints/saves the response.
-- `README.md`: these instructions.
-- `.gitignore`: excludes credentials and generated responses.
-
-## Run in PowerShell (Python 3.10+)
-
-Replace `your-typesafe-key-here` in `jev_evaluation.py` with your key locally.
-Open a terminal in this folder:
+Run in the repository folder:
 
 ```powershell
-python jev_evaluation.py
+python console_app.py
 ```
 
-The response appears in the terminal and is saved to `response.json`. Failed calls
-do not overwrite an existing response, so an old file is not a new assessment.
-No CustomerID prompt: edit `request.json` to change the customer data or questions.
-The program sends the complete request without dropping fields or calculating answers.
-Never put your API key inside the request JSON. Restore the placeholder in the
-Python file before committing or sharing it; `.gitignore` does not hide keys in code.
+Enter the exact CustomerID, for example `CUST0001`.
+The program looks in `data/customers.json` first, then reads the other JSON files
+in `data/` and collects every record with that CustomerID. It prints the customer
+profile and saves `exports/CUST0001_loan_details.json`.
 
-The script reads `request.json`, sends it to JEV, then prints and saves the response.
-Errors appear as normal Python exceptions.
+No extra packages are needed for this lookup. There are no format checks,
+relationship checks, risk calculations, date filters or amount filters.
+All source field names and values are kept, including CustomerID on every record,
+metadata, nulls and full transaction history. A customer with no records in a file
+gets an empty list for that section. An unknown ID prints `Customer not found.`
 
-## Review the supplied request
+The output uses `sections.customer_profile` for matching customers.json records.
+Each other section uses its JSON filename, without `.json`:
 
-The attachment is preserved as supplied, including `model: typesafe/jev-1.14`.
-Use a model name available to your direct Typesafe API account if that name is rejected;
-the official quickstart uses `jev-latest`.
+```json
+{
+  "sections": {
+    "customer_profile": [{"CustomerID": "CUST0001", "DisplayName": "..."}],
+    "employment_income": [],
+    "transactions": []
+  }
+}
+```
 
-`identity_status` contains `yes`/`no` fields. The direct API documents optional
-`criteria: {"true": "...", "false": "..."}` instead. Its PEP question also differs
-from its descriptions about bad records; decide the intended question before editing.
-The script sends your request without changing these fields.
+These are container names only; the original column names inside every record
+are unchanged. Banking monthly records are ordinary objects, not compact arrays.
+There are no generated summary or provenance sections.
 
-References:
-- https://docs.typesafe.ai/introduction/quickstart
-- https://docs.typesafe.ai/primitives/noul
+## Source files
+
+`data/` contains 13 JSON lists covering 50 synthetic customers. These were exported
+once from the eight existing demo Excel workbooks, using their original headers.
+Excel dates are represented as ISO text for JSON. The program itself only reads JSON.
+Edit or replace these JSON lists when the source data changes; the console does
+not convert Excel on each lookup. New data files should be lists of records with
+an exact `CustomerID` field.
+
+## Evaluate with JEV separately
+
+`run_jev.py` reads a customer export and `questions.json`, loads the API key from
+`.env`, and sends `model`, `state` and `questions` to Typesafe. Install its dependency:
+
+```powershell
+python -m pip install python-dotenv
+python run_jev.py
+```
+
+Set `TYPESAFE_API_KEY=your-key` in `.env`. Update the customer export path in
+`run_jev.py` to the ID you just retrieved. Results print and save to `response.json`.
+The console lookup itself makes no API calls. Questions must refer to the source
+fields in `sections`; banking_monthly now contains objects with original headers.
+
+`jev_evaluation.py` remains the standalone sender for an existing complete
+`request.json`. Keep actual API keys out of Git.
