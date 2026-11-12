@@ -1,29 +1,35 @@
 import json
 from pathlib import Path
+from openpyxl import load_workbook
 
 folder = Path(__file__).resolve().parent
 data_folder = folder / 'data'
 customer_id = input('Enter CustomerID: ').strip()
 
-customers = json.loads((data_folder / 'customers.json').read_text(encoding='utf-8-sig'))
-customer = next((row for row in customers if row['CustomerID'] == customer_id), None)
+sections = {}
 
-if customer is None:
+for file in sorted(data_folder.glob('*.xlsx')):
+    workbook = load_workbook(file, read_only=True, data_only=True)
+    for sheet in workbook:
+        rows = sheet.iter_rows(values_only=True)
+        columns = next(rows, ())
+        if 'CustomerID' in columns:
+            customer_column = columns.index('CustomerID')
+            sections.setdefault(sheet.title, []).extend(
+                dict(zip(columns, row)) for row in rows
+                if row[customer_column] == customer_id
+            )
+    workbook.close()
+
+if not sections.get('Customers'):
     print('Customer not found.')
 else:
-    sections = {'customer_profile': [row for row in customers if row['CustomerID'] == customer_id]}
-
-    for file in sorted(data_folder.glob('*.json')):
-        if file.name != 'customers.json':
-            records = json.loads(file.read_text(encoding='utf-8-sig'))
-            sections[file.stem] = [row for row in records if row['CustomerID'] == customer_id]
-
     result = {'sections': sections}
-    output = json.dumps(result, indent=2, ensure_ascii=False)
+    output = json.dumps(result, indent=2, ensure_ascii=False, default=str)
     exports = folder / 'exports'
     exports.mkdir(exist_ok=True)
     output_file = exports / f'{customer_id}_loan_details.json'
     output_file.write_text(output, encoding='utf-8')
 
-    print(json.dumps(customer, indent=2, ensure_ascii=False))
+    print(json.dumps(sections['Customers'], indent=2, ensure_ascii=False, default=str))
     print(f'All customer records saved to: {output_file}')
