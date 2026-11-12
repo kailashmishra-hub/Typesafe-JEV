@@ -1,6 +1,6 @@
 .env
-.env.*
-!.env.example
+.env
+!.env
 .streamlit/secrets.toml
 __pycache__/
 *.py[cod]
