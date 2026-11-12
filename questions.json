@@ -52,23 +52,43 @@
       "Insufficient information": "Insufficient information"
     }
   },
-  "transaction_type": {
+
+  "transaction_type_2026": {
     "type": "choice",
-    "instructions": "How frequently the customer makes transactions below INR 100000?",
+    "instructions": "Read the Transactions array from the customer context. Count each transaction exactly once where BOTH conditions are satisfied: TransactionDate is on or after 2026-01-01 and before 2027-01-01, AND TransactionAmountINR is strictly less than 100000. Include both credit and debit transactions. Do not include transactions with TransactionAmountINR equal to or greater than 100000. Calculate the exact count first, then select the matching category.",
     "criteria": {
-      "very frequently": "very frequently",
-      "every quarter": "every quarter",
-      "annually": "annually",
-      "rarely": "rarely"
+      "0-9 transactions": "Qualifying transaction count >= 0 and <= 9",
+      "10-30 transactions": "Qualifying transaction count >= 10 and <= 30",
+      "31-50 transactions": "Qualifying transaction count >= 31 and <= 50",
+      "51-70 transactions": "Qualifying transaction count >= 51 and <= 70",
+      "71-80 transactions": "Qualifying transaction count >= 71 and <= 80",
+      "81-90 transactions": "Qualifying transaction count >= 81 and <= 90",
+      "Above 90 transactions": "Qualifying transaction count > 90"
     }
   },
+
+  "transaction_type_2025": {
+    "type": "choice",
+    "instructions": "Read the Transactions array from the customer context. Count each transaction exactly once where BOTH conditions are satisfied: TransactionDate is on or after 2025-01-01 and before 2026-01-01, AND TransactionAmountINR is strictly greater than 100000. Include both credit and debit transactions. Do not include transactions with TransactionAmountINR equal to or below than 100000. Calculate the exact count first, then select the matching category.",
+    "criteria": {
+      "0-9 transactions": "Qualifying transaction count >= 0 and <= 9",
+      "10-30 transactions": "Qualifying transaction count >= 10 and <= 30",
+      "31-50 transactions": "Qualifying transaction count >= 31 and <= 50",
+      "51-70 transactions": "Qualifying transaction count >= 51 and <= 70",
+      "71-80 transactions": "Qualifying transaction count >= 71 and <= 80",
+      "81-90 transactions": "Qualifying transaction count >= 81 and <= 90",
+      "Above 90 transactions": "Qualifying transaction count > 90"
+    }
+  },
+
   "kyc_question": {
     "type": "choice",
     "instructions": "Is the customer's KYC currently compliant?",
     "criteria": {
       "very low risk": "very low risk",
       "medium risk": "medium risk",
+      "high risk": "high risk",
       "critical risk": "critical risk"
-    }
+          }
   }
 }

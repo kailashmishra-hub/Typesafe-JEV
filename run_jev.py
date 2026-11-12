@@ -27,6 +27,7 @@ request = Request(
     headers={
         "Authorization": f"Bearer {os.environ['TYPESAFE_API_KEY']}",
         "Content-Type": "application/json",
+        'TypeSafe-Danger-Zone-Long-Context': 'true',
     },
     method="POST",
 )
