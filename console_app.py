@@ -15,6 +15,7 @@ for file in sorted(data_folder.glob('*.xlsx')):
         columns = next(rows, ())
         if 'CustomerID' in columns:
             customer_column = columns.index('CustomerID')
+            # Match only CustomerID; retain every transaction type, amount and date.
             sections.setdefault(sheet.title, []).extend(
                 dict(zip(columns, row)) for row in rows
                 if row[customer_column] == customer_id
@@ -32,4 +33,6 @@ else:
     output_file.write_text(output, encoding='utf-8')
 
     print(json.dumps(sections['Customers'], indent=2, ensure_ascii=False, default=str))
+    for section, records in sections.items():
+        print(f'{section}: {len(records)} records exported')
     print(f'All customer records saved to: {output_file}')
